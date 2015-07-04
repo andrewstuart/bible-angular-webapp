@@ -8,20 +8,27 @@
  * Service in the bibleApp.
  */
 angular.module('bibleApp')
-  .service('verses', function ($http) {
+  .service('Verses', function ($http, $q) {
     var verses = this;
 
-    verses.byId = {};
-
     verses.list = [];
+    var qCache = {};
 
     verses.search = function(q) {
-      return $http.get('//localhost:8089/', {params: {q: q}})
+      return $q(function(resolve, reject) {
+
+        if ( qCache[q] ) { return resolve(qCache[q]); }
+
+        $http.get('//localhost:8089/', {params: {q: q}})
+
         .success(function(verseResults) {
-
-          _.extend(verses.byId, _.indexBy(verseResults, 'id'));
-
+          qCache[q] = verseResults;
           verses.list = verseResults;
+          resolve(verseResults);
+        })
+        .error(function(reason) {
+          reject(reason);
         });
+      });
     };
   });

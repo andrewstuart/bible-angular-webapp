@@ -1,9 +1,17 @@
+
 <form ng-submit="search(term)">
-<input ng-model="term"></input>
-<button action="submit">Go</button>
+<div class="input-group">
+  <span class="input-group-addon">
+    <span class="glyphicon glyphicon-search"></span>
+  </span>
+  <input ng-model="term" class="form-control" aria-label="Search Term">
+  <span class="input-group-btn">
+    <button class="form-control btn btn-default" action="submit">Go</button>
+  </span>
+</div>
 </form>
 
-<div class="verse" ng-repeat="verse in verses | orderBy:'match':true track by verse.id">
+<div class="verse" ng-repeat="verse in verses | orderBy:'match':true track by (verse.version + verse.id)">
   <span class="reference" title="{{verse.match}}">
     <a ng-href="#/{{verse.book}}/{{verse.chapter}}">
       <span class="book">{{::verse.book}}</span>

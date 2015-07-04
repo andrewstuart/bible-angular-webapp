@@ -28,7 +28,7 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .when('/:book/:chapter?/:verse?', {
+      .when('/:version?/:book/:chapter?/:verse?', {
         templateUrl: 'views/view.html',
         controller: 'ViewCtrl'
       })

@@ -13,6 +13,7 @@ angular.module('bibleApp')
       .success(function(verses) {
         $scope.verses = verses;
 
+        $scope.versions = _.groupBy(verses, 'version');
         $scope.chapters = _.groupBy(verses, 'chapter');
       });
   });
