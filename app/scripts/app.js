@@ -28,9 +28,9 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .when('/:version?/:book/:chapter?/:verse?', {
-        templateUrl: 'views/view.html',
-        controller: 'ViewCtrl'
+      .when('/text/:version?/:book/:chapter?/:verse?', {
+        templateUrl: 'views/text.html',
+        controller: 'TextCtrl'
       })
       .otherwise({
         redirectTo: '/'

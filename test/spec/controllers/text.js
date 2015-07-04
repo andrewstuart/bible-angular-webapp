@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: ViewCtrl', function () {
+describe('Controller: TextCtrl', function () {
 
   // load the controller's module
   beforeEach(module('bibleApp'));
@@ -11,7 +11,7 @@ describe('Controller: ViewCtrl', function () {
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    ViewCtrl = $controller('ViewCtrl', {
+    ViewCtrl = $controller('TextCtrl', {
       $scope: scope
     });
   }));

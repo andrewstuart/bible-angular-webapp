@@ -8,7 +8,7 @@
  * Controller of the bibleApp
  */
 angular.module('bibleApp')
-  .controller('ViewCtrl', function ($scope, $http, $location) {
+  .controller('TextCtrl', function ($scope, $http, $location) {
     $http.get('//localhost:8089' + $location.path())
       .success(function(verses) {
         $scope.verses = verses;
