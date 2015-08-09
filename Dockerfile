@@ -6,4 +6,4 @@ VOLUME /var/cache/nginx
 EXPOSE 443
 EXPOSE 80
 
-ADD dist/* /usr/share/nginx/html
+ADD dist/* /usr/share/nginx/html/

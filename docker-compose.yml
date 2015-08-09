@@ -1,5 +1,5 @@
 web:
-  image: docker:5000/bible/web
+  build: .
   restart: always
   environment:
     - VIRTUAL_HOST=bible.astuart.co
