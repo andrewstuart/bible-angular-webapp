@@ -1,0 +1,9 @@
+.book-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  .book {
+    margin: 0.5em;
+    display: inline-block;
+  }
+}

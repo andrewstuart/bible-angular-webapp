@@ -8,7 +8,7 @@
  * Controller of the bibleApp
  */
 angular.module('bibleApp')
-  .controller('MainCtrl', function ($scope, $http, $routeParams, $location, Verses) {
+  .controller('MainCtrl', function ($scope, $routeParams, $location, Verses) {
     if ( $routeParams.q ) {
       $scope.term = $routeParams.q;
 
@@ -20,4 +20,8 @@ angular.module('bibleApp')
     $scope.search = function(q) {
       $location.search('q', q);
     };
+
+    Verses.getBooks().success(function(books) {
+      $scope.books = books;
+    });
   });
