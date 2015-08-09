@@ -6,4 +6,6 @@ VOLUME /var/cache/nginx
 EXPOSE 443
 EXPOSE 80
 
+CMD ["forego", "start", "-r"]
+
 ADD dist/* /usr/share/nginx/html/
