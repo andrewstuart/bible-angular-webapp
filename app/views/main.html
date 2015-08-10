@@ -16,7 +16,7 @@
 </div>
 <div class="verse row" ng-repeat="verse in verses | orderBy:'match':true track by (verse.version + verse.id)">
   <span class="reference col-sm-1" title="{{verse.match}}">
-    <a ng-href="#/{{verse.book}}/{{verse.chapter}}">
+    <a ng-href="#/text/{{verse.book}}/{{verse.chapter}}">
       <span class="book">{{::verse.book}}</span>
       <span class="chapter">{{::verse.chapter}}</span><span class="verse-number">{{::verse.verse}}</span>
     </a>
