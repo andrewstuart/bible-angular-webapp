@@ -16,20 +16,29 @@ angular.module('bibleApp')
   ) {
     $scope.verses = Verses;
 
-    Verses.getBooks().then(function() {
-      if ( $routeParams.q ) {
-        $scope.term = $routeParams.q;
+    function update () {
+      Verses.getBooks().then(function() {
+        if ( $routeParams.q ) {
+          $scope.term = $routeParams.q;
 
-        Verses.search($scope.term).then(function(verses) {
-          _.each(verses, function(v) {
-            v.bookName = Verses.books.byId[v.book].name;
+          Verses.search($scope.term).then(function(verses) {
+            _.each(verses, function(v) {
+              v.bookName = Verses.books.byId[v.book].name;
+            });
+            $scope.verseResults = verses;
           });
-          $scope.verseResults = verses;
-        });
-      }
-    });
+        }
+      });
+    }
+
+    update();
 
     $scope.search = function(q) {
       $location.search('q', q);
     };
+
+    $scope.$on('$routeUpdate', function() {
+      $scope.term = $routeParams.q;
+      update();
+    });
   });
