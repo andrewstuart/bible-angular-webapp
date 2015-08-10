@@ -61,6 +61,10 @@ module.exports = function (grunt) {
       gruntfile: {
         files: ['Gruntfile.js']
       },
+      sass: {
+        files:[  '<%= yeoman.app %>/styles/**/*.scss' ],
+        tasks: ['sass']
+      },
       livereload: {
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -381,6 +385,9 @@ module.exports = function (grunt) {
 
     // Run some tasks in parallel to speed up the build process
     concurrent: {
+      server: [
+        'sass'
+      ],
       dist: [
         'sass',
         'imagemin',

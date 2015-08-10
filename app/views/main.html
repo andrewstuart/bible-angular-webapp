@@ -10,16 +10,18 @@
   </div>
 </form>
 <div class="book-list">
-  <div class="book" ng-repeat="book in books">
+  <div class="book" ng-repeat="book in verses.books">
     <a ng-href="#/text/{{book.id}}/1">{{book.name}}</a>
   </div>
 </div>
-<div class="verse row" ng-repeat="verse in verses | orderBy:'match':true track by (verse.version + verse.id)">
-  <span class="reference col-sm-1" title="{{verse.match}}">
-    <a ng-href="#/text/{{verse.book}}/{{verse.chapter}}">
-      <span class="book">{{::verse.book}}</span>
-      <span class="chapter">{{::verse.chapter}}</span><span class="verse-number">{{::verse.verse}}</span>
-    </a>
-  </span>
-  <span class="text col-sm-11">{{verse.text}}</span>
+<div class="search-results">
+  <div class="verse result row" ng-repeat="verse in verseResults | orderBy:'match':true track by (verse.version + verse.id)">
+    <span class="reference" title="{{verse.match}}">
+      <a ng-href="#/text/{{verse.book}}/{{verse.chapter}}">
+        <span class="book">{{::verse.bookName}}</span>
+        <span class="chapter">{{::verse.chapter}}</span><span class="verse-number">{{::verse.verse}}</span>
+      </a>
+    </span>
+    <span class="text">{{verse.text}}</span>
+  </div>
 </div>

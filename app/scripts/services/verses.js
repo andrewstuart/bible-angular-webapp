@@ -25,7 +25,7 @@ angular.module('bibleApp')
     this.$get = function($http, $q) {
       function VerseProvider () {
         var verses = this;
-
+        verses.books = [];
         verses.list = [];
         var qCache = {};
 
@@ -69,7 +69,15 @@ angular.module('bibleApp')
         };
 
         verses.getBooks = function() {
-          return $http.get(vp.root + '/books');
+          return $q(function(resolve, reject) {
+            if ( verses.books && verses.books.length ) { return resolve(verses.books); }
+
+            $http.get(vp.root + '/books').success(function(books) {
+              verses.books = books;
+              verses.books.byId = _.indexBy(books, 'id');
+              resolve(books);
+            }).catch(reject);
+          });
         };
       }
       return new VerseProvider();

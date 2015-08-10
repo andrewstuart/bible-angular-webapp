@@ -8,20 +8,28 @@
  * Controller of the bibleApp
  */
 angular.module('bibleApp')
-  .controller('MainCtrl', function ($scope, $routeParams, $location, Verses) {
-    if ( $routeParams.q ) {
-      $scope.term = $routeParams.q;
+.controller('MainCtrl', function (
+    $location,
+    $routeParams,
+    $scope,
+    Verses
+  ) {
+    $scope.verses = Verses;
 
-      Verses.search($scope.term).then(function(verses) {
-        $scope.verses = verses;
-      });
-    }
+    Verses.getBooks().then(function() {
+      if ( $routeParams.q ) {
+        $scope.term = $routeParams.q;
+
+        Verses.search($scope.term).then(function(verses) {
+          _.each(verses, function(v) {
+            v.bookName = Verses.books.byId[v.book].name;
+          });
+          $scope.verseResults = verses;
+        });
+      }
+    });
 
     $scope.search = function(q) {
       $location.search('q', q);
     };
-
-    Verses.getBooks().success(function(books) {
-      $scope.books = books;
-    });
   });

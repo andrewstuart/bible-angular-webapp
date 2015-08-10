@@ -1,3 +1,29 @@
+.search-results {
+  .verse {
+    position: relative;
+    z-index: 1;
+    padding: 0.25em;
+    margin: 0.75em;
+    // background-color: transparentize(black, 0.95);
+    // box-shadow: 10px 10px 10px rgba(0,0,0,0.15);
+    // border-radius: 0.75em;
+
+    $firstCol: 2;
+
+    .reference {
+      @include make-sm-column($firstCol);
+      font-weight: bold;
+      .verse-number::before {
+        content: ':'
+      }
+    }
+
+    .text {
+      @include make-sm-column(12-$firstCol);
+    }
+  }
+}
+
 .book-list {
   display: flex;
   flex-wrap: wrap;
