@@ -5,7 +5,6 @@ VOLUME /etc/nginx/certs
 VOLUME /var/cache/nginx
 EXPOSE 443
 EXPOSE 80
-
-CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+ENV VIRTUAL_HOST=bible,bible.astuart.co
 
 COPY dist /usr/share/nginx/html
