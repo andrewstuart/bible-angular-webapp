@@ -1,8 +1,8 @@
 web:
-  build: .
+  image: docker:5000/bible/web
   restart: always
   environment:
-    - VIRTUAL_HOST=bible.astuart.co
+    - VIRTUAL_HOST=bible.astuart.co,bible
     - VIRTUAL_PORT=80
 api:
   image: docker:5000/bible/api
@@ -10,6 +10,6 @@ api:
   external_links:
     - psql01:postgres
   environment:
-    - VIRTUAL_HOST=bible-api.astuart.co
+    - VIRTUAL_HOST=bible-api.astuart.co,bible-api
     - VIRTUAL_PORT=80
     - PGPASSWORD
