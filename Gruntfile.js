@@ -33,7 +33,7 @@ module.exports = function (grunt) {
       },
       styles: {
         files: {
-          '.tmp/styles/main.css': 'app/**/*.scss'
+          '.tmp/styles/main.css': 'app/styles/main.scss'
         }
       }
     },
@@ -445,7 +445,6 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'test',
     'build'
   ]);
 };
